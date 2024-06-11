@@ -32,11 +32,28 @@
 // delayedColorChange('green',2000);
 // delayedColorChange('yellow',3000);
 
-const request = fakeRequestPromise('yelp.com/api/coffee');
-request
-    .then(()=>{
-        console.log("Promise resolved");
+// const request = fakeRequestPromise('yelp.com/api/coffee');
+// request
+//     .then(()=>{
+//         console.log("Promise resolved");
+//     })
+//     .catch(()=>{
+//         console.log("Promise rejected")
+//     })
+
+const fakeRequest = (url) =>{
+    return new Promise((resolve, reject)=>{
+        const rand = Math.random();
+        setTimeout(()=>{
+            if(rand<0.7){
+                resolve('Yiur fake data here');
+            }
+            reject('Request error');
+        },1000)
     })
-    .catch(()=>{
-        console.log("Promise rejected")
-    })
+}
+
+fakeRequest('/dogs/1')
+.then(()=>{
+    console.log("Done with request");
+})
