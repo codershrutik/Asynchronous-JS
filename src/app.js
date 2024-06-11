@@ -32,3 +32,11 @@
 // delayedColorChange('green',2000);
 // delayedColorChange('yellow',3000);
 
+const request = fakeRequestPromise('yelp.com/api/coffee');
+request
+    .then(()=>{
+        console.log("Promise resolved");
+    })
+    .catch(()=>{
+        console.log("Promise rejected")
+    })
