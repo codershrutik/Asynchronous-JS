@@ -41,19 +41,44 @@
 //         console.log("Promise rejected")
 //     })
 
-const fakeRequest = (url) =>{
-    return new Promise((resolve, reject)=>{
-        const rand = Math.random();
-        setTimeout(()=>{
-            if(rand<0.7){
-                resolve('Yiur fake data here');
-            }
-            reject('Request error');
-        },1000)
-    })
+// const fakeRequest = (url) =>{
+//     return new Promise((resolve, reject)=>{
+//         const rand = Math.random();
+//         setTimeout(()=>{
+//             if(rand<0.7){
+//                 resolve('Yiur fake data here');
+//             }
+//             reject('Request error');
+//         },1000)
+//     })
+// }
+
+// fakeRequest('/dogs/1')
+// .then(()=>{
+//     console.log("Done with request");
+// })
+
+// const sing = async() =>{
+//     return 'LA LA LAND'
+// }
+
+// sing()
+//     .then(data =>{
+//         throw 'On no, problem!'
+//     })
+
+const login = async(username, password)=>{
+    if(!username || !password) throw 'Missing Credentials'
+    if(password == 'corgisarecute') return 'Welcome'
+    throw 'Invalid password'
 }
 
-fakeRequest('/dogs/1')
-.then(()=>{
-    console.log("Done with request");
+login('asajsdb')
+.then(msg =>{
+    console.log('Log in')
+    console.log(msg)
+})
+.catch(err =>{
+    console.log('ERROR')
+    console.log(err)
 })
