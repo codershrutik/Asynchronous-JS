@@ -67,18 +67,41 @@
 //         throw 'On no, problem!'
 //     })
 
-const login = async(username, password)=>{
-    if(!username || !password) throw 'Missing Credentials'
-    if(password == 'corgisarecute') return 'Welcome'
-    throw 'Invalid password'
+// const login = async(username, password)=>{
+//     if(!username || !password) throw 'Missing Credentials'
+//     if(password == 'corgisarecute') return 'Welcome'
+//     throw 'Invalid password'
+// }
+
+// login('asajsdb')
+// .then(msg =>{
+//     console.log('Log in')
+//     console.log(msg)
+// })
+// .catch(err =>{
+//     console.log('ERROR')
+//     console.log(err)
+// })
+
+const delayedColorChange = (newColor, delay) =>{
+    setTimeout(()=>{
+        document.body.style.backgroundColor = newColor;
+    },delay)
 }
 
-login('asajsdb')
-.then(msg =>{
-    console.log('Log in')
-    console.log(msg)
-})
-.catch(err =>{
-    console.log('ERROR')
-    console.log(err)
-})
+async function rainbow(){
+    await delayedColorChange('red',1000);
+    await delayedColorChange('orange',1000);
+    await delayedColorChange('yellow',1000);
+    await delayedColorChange('green',1000);
+    await delayedColorChange('blue',1000);
+    await delayedColorChange('indigo',1000);
+    await delayedColorChange('voilet',1000);
+}
+
+rainbow().then(()=>console.log("End of rainbow"))
+
+async function printRainbow(){
+    await rainbow();
+    console.log("END OF RAINBOW")
+}
